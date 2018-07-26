@@ -11,11 +11,11 @@ ROUTING_SUFFIX="${HOSTNAME}"
 
 if [ -z ${1} ];
   then
-    echo "Starting OpenShift host data directory: " + ${1};
-    oc cluster up --service-catalog=true --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP} --host-data-dir=${1};
-  else
     echo "Starting OpenShift without host data directory";
     oc cluster up --service-catalog=true --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP};
+  else
+    echo "Starting OpenShift host data directory: " ${1};
+    oc cluster up --service-catalog=true --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP} --host-data-dir=${1};
 fi
 
 #
