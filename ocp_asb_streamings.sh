@@ -9,14 +9,8 @@ PUBLIC_IP=${PUBLIC_IP:-"192.168.42.1"}
 HOSTNAME=${PUBLIC_IP}.nip.io
 ROUTING_SUFFIX="${HOSTNAME}"
 
-if [ -z ${1} ];
-  then
-    echo "Starting OpenShift without host data directory";
-    oc cluster up --enable=service-catalog,template-service-broker,router,registry,web-console,persistent-volumes,sample-templates,rhel-imagestreams --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP};
-  else
-    echo "Starting OpenShift host data directory: " ${1};
-    oc cluster up --enable=service-catalog,template-service-broker,router,registry,web-console,persistent-volumes,sample-templates,rhel-imagestreams --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP} --host-data-dir=${1};
-fi
+echo "Starting Openshift Cluster"
+oc cluster up --enable=service-catalog,template-service-broker,router,registry,web-console,persistent-volumes,sample-templates,rhel-imagestreams --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP};
 
 #
 # Logging in as system:admin so we can create a clusterrolebinding and
