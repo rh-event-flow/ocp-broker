@@ -10,7 +10,7 @@ HOSTNAME=${PUBLIC_IP}.nip.io
 ROUTING_SUFFIX="${HOSTNAME}"
 
 echo "Starting Openshift Cluster"
-oc cluster up --enable=service-catalog,template-service-broker,router,registry,web-console,persistent-volumes,sample-templates,rhel-imagestreams --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP};
+oc cluster up --enable=service-catalog,template-service-broker,router,registry,web-console,persistent-volumes --routing-suffix=${ROUTING_SUFFIX} --public-hostname=${PUBLIC_IP};
 
 #
 # Logging in as system:admin so we can create a clusterrolebinding and
